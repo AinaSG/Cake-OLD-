@@ -133,5 +133,6 @@ end
 		TO DO
 -Els dos (tres, cuatre...) poden ser aleatoris
 -NOTA: Amb 8 o 9 iteracions hauria de ser suficient
+-Test bla bal
 
  ]]
