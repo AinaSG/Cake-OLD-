@@ -51,7 +51,7 @@ function Player:hitFloor(maxY)
 end
 
 --Update
-function Player:update(dt, gravity, yFloor)
+function Player:update(dt)
 	--Posició
 	self.x = self.x + (self.xSpeed * dt)
 	self.y = self.y + (self.ySpeed * dt)

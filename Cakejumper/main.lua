@@ -1,25 +1,27 @@
 require "Player"
-
+require "Scene"
+  gravity = 2800  
+  yFloor = 500
 function love.load()
-	gravity = 2800	
-	yFloor = 500
+
+  sene = Scene:new("main")
+  p = Player:new(0,0,25,40)
+  sene:addObject(p)
 
     groundColor = {25,200,25}
 
-    -- creem player, donem valors
-    p = Player:new(0,0,25,40) 
+    -- creem player, donem valors 
 end
 
 function love.update(dt)
-    -- player's position
-    p:update(dt, gravity, yFloor)
+  sene:update(dt)
 end
 
 function love.draw()
 	-- arrodonir x i y
 
 
-    p:draw()
+    sene:draw()
 
 
     love.graphics.setColor(groundColor)
@@ -35,6 +37,9 @@ end
 function love.keyreleased(key)
     if key == "escape" then
         love.event.push("q")  -- actually causes the app to quit
+    end
+    if key == "p" then
+       sene:removeObject(p)
     end
    -- if (key == "right") or (key == "left") then
    --     p:stop()
