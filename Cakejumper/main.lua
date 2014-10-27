@@ -7,7 +7,7 @@ function love.load()
     groundColor = {25,200,25}
 
     -- creem player, donem valors
-    p = Player:new(300,300,25,40) 
+    p = Player:new(0,0,25,40) 
 end
 
 function love.update(dt)

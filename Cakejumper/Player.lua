@@ -79,7 +79,7 @@ function Player:update(dt, gravity, yFloor)
 
 	--------------
 
-	if self.x > 800 - self.width then self.x = 800 - self.width end
+	if self.x > screenWidth - self.width then self.x = screenWidth - self.width end
     if self.x < 0 then self.x = 0 end
     if self.y < 0 then self.y = 0 end
     if self.y > yFloor - self.height then
