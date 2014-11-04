@@ -1,7 +1,7 @@
 Player = {}
 
 --Constructor
-function Player:new(cX, cY, cWidth, cHeight)
+function Player:new(cX, cY, cWidth, cHeight) -- Pos x, Posy, Amplada i alçada, tot opcional 
 	local object = {
     	x = cX or 0,
     	y = cY or 0,

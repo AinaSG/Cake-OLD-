@@ -1,6 +1,6 @@
 Scene = {}
 
-function Scene:new(names)
+function Scene:new(names) --Nom de l'escena, opcional
 	local object ={
 		name = names or "Unnamed",
 		objects = {},
