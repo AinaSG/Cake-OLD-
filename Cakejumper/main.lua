@@ -11,7 +11,7 @@ function love.load()
   local p = Player:new(0,0,25,40)
   sene = Scene:new("main",{p})
   for i = 1, 15 do
-    sene:addObject(Platform:new(i*10, screenHeight - i *  100, 3))
+    sene:addObject(Platform:new(i*10, screenHeight - i *  100, 3+i))
   end
     groundColor = {25,200,25}
 

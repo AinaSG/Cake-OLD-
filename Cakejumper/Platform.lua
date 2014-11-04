@@ -9,7 +9,11 @@ function Platform:new(cx, cy, num)
 		num_tiles = num,
 		width = num * 32,
 		height = 32,
-		collisions = true
+		collisions = true,
+		sprite = love.graphics.newImage("Sprites/tilep.png"),
+		leftSprite = love.graphics.newQuad(0, 0, 32, 32, 96, 32),
+		centerSprite = love.graphics.newQuad(32, 0, 32, 32, 96, 32),
+		righSprite = love.graphics.newQuad(64, 0, 32, 32, 96, 32)
 	}
 	setmetatable(object, { __index = Platform})
 	return object
@@ -19,13 +23,14 @@ function Platform:update(dt)
 end
 
 function Platform:draw()
-	-- primer tile
-	love.graphics.setColor(100,0,0)
-    love.graphics.rectangle("fill", self.x, self.y, 32, self.height)
-    -- tiles intermitjos
-    love.graphics.setColor(0,100,0)
-    love.graphics.rectangle("fill", self.x + 32, self.y, self.width - 64, self.height)
-    --ultim tile
-    love.graphics.setColor(0,0,100)
-    love.graphics.rectangle("fill", self.x + self.width - 32, self.y, 32, self.height)
+    love.graphics.setColor(255, 255, 255)
+    --Primer Tile
+    love.graphics.draw(self.sprite, self.leftSprite, self.x, self.y)
+    --Tiles Centrals
+    local num_central_tiles = self.num_tiles - 2
+    for i = 1, num_central_tiles do
+    	love.graphics.draw(self.sprite, self.centerSprite, self.x + (32*i), self.y)
+  	end
+  	--Ultim Tile
+    love.graphics.draw(self.sprite, self.righSprite, self.x + self.width - 32, self.y)
 end
