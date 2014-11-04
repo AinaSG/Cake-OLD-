@@ -5,3 +5,6 @@ function love.conf(t)
 	screenWidth = t.screen.width
 	screenHeight = t.screen.height 
 end
+
+screenWidth = 384
+screenHeight = 621

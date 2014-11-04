@@ -1,13 +1,18 @@
 require "Player"
 require "Scene"
-  gravity = 2800  
-  yFloor = 500
+require "Platform"
+
+gravity = 2800  
+yFloor = 500
+
 function love.load()
 
-  sene = Scene:new("main")
-  p = Player:new(0,0,25,40)
-  sene:addObject(p)
-
+  
+  local p = Player:new(0,0,25,40)
+  sene = Scene:new("main",{p})
+  for i = 1, 15 do
+    sene:addObject(Platform:new(i*10, screenHeight - i *  100, 3))
+  end
     groundColor = {25,200,25}
 
     -- creem player, donem valors 
@@ -18,20 +23,8 @@ function love.update(dt)
 end
 
 function love.draw()
-	-- arrodonir x i y
-
-
-    sene:draw()
-
-
-    love.graphics.setColor(groundColor)
-    love.graphics.rectangle("fill", 0, yFloor, 800, 100)
- 
-    -- debug
-    love.graphics.setColor(255, 255, 255)
-    local isTrue = ""
-   -- love.graphics.print("Player coordinates: ("..x..","..y..")", 5, 5)
-    --love.graphics.print("Current state: "..p.state, 5, 20)
+  love.graphics.setColor(255, 255, 255)
+  sene:draw()
 end
  
 function love.keyreleased(key)

@@ -14,7 +14,8 @@ function Player:new(cX, cY, cWidth, cHeight) -- Pos x, Posy, Amplada i alçada, 
     	runSpeed = 5000,
     	friction = 10,
     	canJump = false,
-    	color = {255,0,128}
+    	color = {255,0,128},
+    	collisions = true,
 	}
 	setmetatable(object, { __index = Player})
 	return object
@@ -81,9 +82,9 @@ function Player:update(dt)
 
 	if self.x > screenWidth - self.width then self.x = screenWidth - self.width end
     if self.x < 0 then self.x = 0 end
-    if self.y < 0 then self.y = 0 end
-    if self.y > yFloor - self.height then
-        self:hitFloor(yFloor)
+    --if self.y < 0 then self.y = 0 end
+    if self.y > screenHeight - self.height then
+        self:hitFloor(screenHeight)
     end
 
     --------------
@@ -100,6 +101,16 @@ function Player:update(dt)
     -- salta!
         self:jump()
     end 
+end
+
+function Player:checkCollision(obj)
+	if (self.ySpeed > 0 
+		and (self.y + self.height > obj.y 
+			and self.y + self.height < obj.y + obj.height)
+		and ((self.x + self.width > obj.x) 
+			and (self.x < obj.x + obj.width)))then 
+		self:hitFloor(obj.y) 
+	end
 end
 
 --Draw
