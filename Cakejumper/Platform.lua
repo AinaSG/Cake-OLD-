@@ -22,15 +22,15 @@ end
 function Platform:update(dt)
 end
 
-function Platform:draw()
+function Platform:draw(offset)
     love.graphics.setColor(255, 255, 255)
     --Primer Tile
-    love.graphics.draw(self.sprite, self.leftSprite, self.x, self.y)
+    love.graphics.draw(self.sprite, self.leftSprite, self.x, self.y + offset)
     --Tiles Centrals
     local num_central_tiles = self.num_tiles - 2
     for i = 1, num_central_tiles do
-    	love.graphics.draw(self.sprite, self.centerSprite, self.x + (32*i), self.y)
+    	love.graphics.draw(self.sprite, self.centerSprite, self.x + (32*i), self.y + offset)
   	end
   	--Ultim Tile
-    love.graphics.draw(self.sprite, self.righSprite, self.x + self.width - 32, self.y)
+    love.graphics.draw(self.sprite, self.righSprite, self.x + self.width - 32, self.y + offset)
 end

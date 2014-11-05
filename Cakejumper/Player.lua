@@ -114,9 +114,9 @@ function Player:checkCollision(obj)
 end
 
 --Draw
-function Player:draw()
+function Player:draw(offset)
 	local x = math.floor(self.x)
     local y = math.floor(self.y)
     love.graphics.setColor(self.color)
-    love.graphics.rectangle("fill", x, y, self.width, self.height)
+    love.graphics.rectangle("fill", x, y + offset , self.width, self.height)
 end
