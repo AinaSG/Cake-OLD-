@@ -3,6 +3,7 @@ Coin = {}
 --Constructor
 function Coin:new(cx, cy, cvalue) --Pos x, i pos Y; Valor de la moneda, opcional.s
 	local object ={
+		objectType = "coin",
 		x = cx,
 		y = cy,
 		value = cvalue or 100

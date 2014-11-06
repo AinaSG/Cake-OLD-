@@ -3,12 +3,13 @@ Player = {}
 --Constructor
 function Player:new(cX, cY, cWidth, cHeight) -- Pos x, Posy, Amplada i alçada, tot opcional 
 	local object = {
+		objectType = "player",
     	x = cX or 0,
     	y = cY or 0,
     	width = cWidth or 25,
     	height = cHeight or 40,
     	xSpeed = 0,
-    	ySpeed = -1,
+    	ySpeed = 0,
     	state = "",
     	jumpSpeed = -800,
     	runSpeed = 5000,
@@ -104,13 +105,17 @@ function Player:update(dt)
 end
 
 function Player:checkCollision(obj)
-	if (self.ySpeed > 0 
-		and (self.y + self.height > obj.y 
-			and self.y + self.height < obj.y + obj.height)
-		and ((self.x + self.width > obj.x) 
-			and (self.x < obj.x + obj.width)))then 
-		self:hitFloor(obj.y) 
-	end
+	--if obj.type == "platform" then
+		if (self.ySpeed > 0 
+			and (self.y + self.height > obj.y 
+				and self.y + self.height < obj.y + obj.height)
+			and ((self.x + self.width > obj.x) 
+				and (self.x < obj.x + obj.width)))then 
+			self:hitFloor(obj.y) 
+		end
+	--elseif obj.type == "coin" then
+	--	print(coin)
+	--end
 end
 
 --Draw

@@ -4,13 +4,14 @@ Platform = {}
 function Platform:new(cx, cy, num)
 	num = num or 2
 	local object = {
+		objectType = "platform",
 		x = cx,
 		y = cy,
 		num_tiles = num,
 		width = num * 32,
 		height = 32,
 		collisions = true,
-		sprite = love.graphics.newImage("Sprites/tilep.png"),
+		sprite = love.graphics.newImage("Sprites/tileg.png"),
 		leftSprite = love.graphics.newQuad(0, 0, 32, 32, 96, 32),
 		centerSprite = love.graphics.newQuad(32, 0, 32, 32, 96, 32),
 		righSprite = love.graphics.newQuad(64, 0, 32, 32, 96, 32)
