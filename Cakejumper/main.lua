@@ -13,6 +13,7 @@ function love.load()
   for i = 1, 40 do
     sene:addObject(Platform:new(i*10, screenHeight - i *  100, 3+i))
   end
+  sene:addObject(Platform:new(0, 622-32, 384/32))
     groundColor = {25,200,25}
 
     -- creem player, donem valors 
