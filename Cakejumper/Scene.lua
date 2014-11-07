@@ -54,10 +54,15 @@ function Scene:removeObject(o)
 	end
 end
 
+function Scene:removePlayer(p)
+	for ind, pl in pairs(self.players) do
+		if (pl == p) then table.remove(self.players, ind) end
+	end
+end
+
 function Scene:getOffset(dt)
 	local pp = self.players[1].y
 	if pp < screenHeight/2 then
-		--self.drawing_offset = screenHeight/2 - pp
 		self.drawing_offset = math.floor(math.lerp(self.drawing_offset, (screenHeight/2 - pp), dt*5))
 	else
 		self.drawing_offset = math.floor(math.lerp(self.drawing_offset, 0, dt*5))

@@ -105,7 +105,6 @@ function Player:update(dt)
 end
 
 function Player:checkCollision(obj)
-	--if obj.type == "platform" then
 		if (self.ySpeed > 0 
 			and (self.y + self.height > obj.y 
 				and self.y + self.height < obj.y + obj.height)
@@ -113,9 +112,6 @@ function Player:checkCollision(obj)
 				and (self.x < obj.x + obj.width)))then 
 			self:hitFloor(obj.y) 
 		end
-	--elseif obj.type == "coin" then
-	--	print(coin)
-	--end
 end
 
 --Draw

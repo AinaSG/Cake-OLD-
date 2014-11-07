@@ -16,8 +16,6 @@ function love.load()
   end
   sene:addObject(Platform:new(0, 622-32, 384/32))
     groundColor = {25,200,25}
-
-    -- creem player, donem valors 
 end
 
 function love.update(dt)
@@ -34,9 +32,6 @@ function love.keyreleased(key)
         love.event.push("q")  -- actually causes the app to quit
     end
     if key == "p" then
-       sene:removeObject(p)
+       sene:removePlayer(p)
     end
-   -- if (key == "right") or (key == "left") then
-   --     p:stop()
-   -- end
 end
