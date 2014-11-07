@@ -1,6 +1,7 @@
 require "Player"
 require "Scene"
 require "Platform"
+require "Background"
 
 gravity = 2800  
 yFloor = 500
