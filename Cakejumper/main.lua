@@ -4,12 +4,12 @@ require "Platform"
 require "Background"
 
 gravity = 2800  
-yFloor = 500
+time_p = 0
 
 function love.load()
-
-  
-  local p = Player:new(0,0,25,40)
+  scene1 = love.graphics.newImage("Sprites/t1.png")
+  scene2 = love.graphics.newImage("Sprites/t2.png")  
+  p = Player:new(0,0,25,40, "Rectangle rosa")
   sene = Scene:new("main",{p})
   for i = 1, 40 do
     sene:addObject(Platform:new(i*10, screenHeight - i *  100, 3+i))
@@ -19,12 +19,23 @@ function love.load()
 end
 
 function love.update(dt)
-  sene:update(dt)
+  if (time_p < 2) then 
+  elseif (time_p >= 2 and time_p < 4) then
+  else
+    sene:update(dt)
+  end
+  time_p = time_p + dt
 end
 
 function love.draw()
-  love.graphics.setColor(255, 255, 255)
-  sene:draw()
+  if (time_p < 2) then
+    love.graphics.draw(scene1, 0, 0)
+  elseif (time_p >= 2 and time_p < 4.1) then
+    love.graphics.draw(scene2, 0, 0)
+  else
+    love.graphics.setColor(255, 255, 255)
+    sene:draw()
+  end
 end
  
 function love.keyreleased(key)
