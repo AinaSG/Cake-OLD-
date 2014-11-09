@@ -34,7 +34,7 @@ function love.keyreleased(key)
         love.event.push("q")  -- actually causes the app to quit
     end
     if key == "p" then
-       sene:removeObject(p)
+       sene:removePlayer(p)
     end
    -- if (key == "right") or (key == "left") then
    --     p:stop()
