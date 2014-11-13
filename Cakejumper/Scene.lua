@@ -17,9 +17,11 @@ end
 function Scene:update(dt)
 	self:getOffset(dt)
 	for ind, pl in pairs(self.players) do
+		if (pl.toDestroy) then self:removePlayer(pl) end
  		pl:update(dt);
 	end
 	for ind, obj in pairs(self.objects) do
+		if (obj.toDestroy) then self:removeObject(obj) end
  		obj:update(dt);
  		if obj.collisions then
  			for i, pl in pairs(self.players) do
@@ -41,6 +43,9 @@ function Scene:draw()
 	end
 	for ind, pl in pairs(self.players) do
  		pl:draw(self.drawing_offset);
+	end
+	if (not (next(self.players) == nil)) then
+		love.graphics.print("score: " .. self.players[1].score, 5, 5)
 	end
 end
 

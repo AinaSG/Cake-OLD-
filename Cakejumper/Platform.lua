@@ -14,7 +14,8 @@ function Platform:new(cx, cy, num)
 		sprite = love.graphics.newImage("Sprites/tileg.png"),
 		leftSprite = love.graphics.newQuad(0, 0, 32, 32, 96, 32),
 		centerSprite = love.graphics.newQuad(32, 0, 32, 32, 96, 32),
-		righSprite = love.graphics.newQuad(64, 0, 32, 32, 96, 32)
+		righSprite = love.graphics.newQuad(64, 0, 32, 32, 96, 32),
+		toDestroy = false
 	}
 	setmetatable(object, { __index = Platform})
 	return object
@@ -34,4 +35,8 @@ function Platform:draw(offset)
   	end
   	--Ultim Tile
     love.graphics.draw(self.sprite, self.righSprite, self.x + self.width - 32, self.y + offset)
+end
+
+function Platform:destroy()
+	self.toDestroy = true
 end

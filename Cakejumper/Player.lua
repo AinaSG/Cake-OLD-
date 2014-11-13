@@ -18,6 +18,8 @@ function Player:new(cX, cY, cWidth, cHeight, cid) -- Pos x, Posy, Amplada i alç
     	canJump = false,
     	color = {255,0,128},
     	collisions = true,
+    	toDestroy = false,
+    	score = 0
 	}
 	setmetatable(object, { __index = Player})
 	return object
@@ -106,6 +108,7 @@ function Player:update(dt)
 end
 
 function Player:checkCollision(obj)
+	if (obj.objectType == "platform") then
 		if (self.ySpeed > 0 
 			and (self.y + self.height > obj.y 
 				and self.y + self.height < obj.y + obj.height)
@@ -113,6 +116,15 @@ function Player:checkCollision(obj)
 				and (self.x < obj.x + obj.width)))then 
 			self:hitFloor(obj.y) 
 		end
+	elseif (obj.objectType == "coin" and not obj.toDestroy) then
+		if ((self.x + self.width > obj.x and self.x < obj.x + obj.width or 
+			self.x + self.width < obj.x and self.x > obj.x +obj.width) and 
+			(self.y + self.height > obj.y and self.y < obj.y + obj.height or 
+			self.y + self.height < obj.y and self.y > obj.y +obj.height)) then
+			self.score = self.score + 1
+			obj:destroy();
+		end
+	end
 end
 
 --Draw
@@ -121,4 +133,8 @@ function Player:draw(offset)
     local y = math.floor(self.y)
     love.graphics.setColor(self.color)
     love.graphics.rectangle("fill", x, y + offset , self.width, self.height)
+end
+
+function Player:destroy()
+	self.toDestroy = true
 end

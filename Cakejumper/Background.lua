@@ -12,7 +12,8 @@ function Background:new()
 		sky = love.graphics.newQuad(1152, 0, 384, 622, 1536, 622),
 		clouds = love.graphics.newQuad(768, 0, 384, 622, 1536, 622),
 		bg_hills = love.graphics.newQuad(384, 0, 384, 622, 1536, 622),
-		ft_hills = love.graphics.newQuad(0, 0, 384, 622, 1536, 622)
+		ft_hills = love.graphics.newQuad(0, 0, 384, 622, 1536, 622),
+		toDestroy = false
 	}
 	setmetatable(object, { __index = Background})
 	return object
@@ -35,3 +36,8 @@ function Background:getvOffset(dt, offset)
  	bg_voffset = math.max(-50, math.min ( 0, math.floor(pp*0.02))) --math.max(0,(-math.floor( math.lerp( (1 - pp), 0, dt))*0.01))
  	ft_voffset = math.min(85, math.max ( 0, -math.floor(pp*0.05))) -- math.floor( math.lerp( 0, 2, dt*5))
  end 
+
+
+function Background:destroy()
+	self.toDestroy = true
+end

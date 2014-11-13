@@ -2,6 +2,7 @@ require "Player"
 require "Scene"
 require "Platform"
 require "Background"
+require "Coin"
 
 gravity = 2800  
 time_p = 0
@@ -13,29 +14,31 @@ function love.load()
   sene = Scene:new("main",{p})
   for i = 1, 40 do
     sene:addObject(Platform:new(i*10, screenHeight - i *  100, 3+i))
+    sene:addObject(Coin:new(i*10+8,screenHeight - i * 100 - 24))
   end
+
   sene:addObject(Platform:new(0, 622-32, 384/32))
     groundColor = {25,200,25}
 end
 
 function love.update(dt)
-  if (time_p < 2) then 
-  elseif (time_p >= 2 and time_p < 4) then
-  else
+  --if (time_p < 2) then 
+  --elseif (time_p >= 2 and time_p < 4) then
+  --else
     sene:update(dt)
-  end
-  time_p = time_p + dt
+ -- end
+  --time_p = time_p + dt
 end
 
 function love.draw()
-  if (time_p < 2) then
-    love.graphics.draw(scene1, 0, 0)
-  elseif (time_p >= 2 and time_p < 4.1) then
-    love.graphics.draw(scene2, 0, 0)
-  else
+ -- --if (time_p < 2) then
+    --love.graphics.draw(scene1, 0, 0)
+  --elseif (time_p >= 2 and time_p < 4.1) then
+    --love.graphics.draw(scene2, 0, 0)
+  --else
     love.graphics.setColor(255, 255, 255)
     sene:draw()
-  end
+ -- end
 end
  
 function love.keyreleased(key)
